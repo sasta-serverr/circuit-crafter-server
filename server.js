@@ -11,9 +11,9 @@ app.use(express.json()); // Allows the server to read the data you send (like to
 
 // 1. Initialize Razorpay (Updated for Render Security)
 const razorpay = new Razorpay({
-    key_id: 'rzp_test_SJjM5EzjnFRi7Z', 
+    key_id: 'rzp_live_SJiSy0USTt3wUl', 
     // Uses Render's secure variable, but falls back to your local key for testing
-    key_secret: process.env.RAZORPAY_SECRET || 'IdSmzu5MbEPEALIGZrO5kV8u' 
+    key_secret: process.env.RAZORPAY_SECRET || 'Ky6cDLjyCw9B4bLuOLu05sVk' 
 });
 
 // 2. Route to Create an Order (Frontend calls this first)
@@ -43,7 +43,7 @@ app.post('/verify-payment', (req, res) => {
     
     // Updated to match the secure environment variable logic
     const expectedSign = crypto
-        .createHmac("sha256", process.env.RAZORPAY_SECRET || "IdSmzu5MbEPEALIGZrO5kV8u") 
+        .createHmac("sha256", process.env.RAZORPAY_SECRET || "Ky6cDLjyCw9B4bLuOLu05sVk") 
         .update(sign.toString())
         .digest("hex");
 
